@@ -21,29 +21,32 @@ def getVals():
 
     '''twoPoint_improve = read('C:\\Users\\bktzg\\twopoint improves.csv')
     twoPoint_average = read('C:\\Users\\bktzg\\twopoint averages.csv')
-
+'''
     multiPoint_improve = read('C:\\Users\\bktzg\\multipoint improves.csv')
     multiPoint_average = read('C:\\Users\\bktzg\\multipoint averages.csv')
 
     aggressiveMutate_improve = read('C:\\Users\\bktzg\\aggressive improves.csv')
     aggressiveMutate_average = read('C:\\Users\\bktzg\\aggressive averages.csv')
-'''
-    return baseline_improve, baseline_average
+
+    return baseline_improve, multiPoint_improve, aggressiveMutate_improve, baseline_average, multiPoint_average,\
+           aggressiveMutate_average
 
 
-def plot(baseline, average):
-    plt.plot(baseline, label='improves')
-    plt.plot(average, label='averages')
+def plot(baseline, multipoint, aggressive):
+    plt.plot(baseline, label='baseline')
+    plt.plot(multipoint, label='multipoint mutator')
+    plt.plot(aggressive, label='aggressive mutator')
     plt.xlabel('Iteration')
-    plt.ylabel('Score')
+    plt.ylabel('Maximum Score')
+    plt.title('Comparison of maximum score through iterations between\n various GA operators')
     plt.legend()
     plt.autoscale()
 
     plt.show()
 
 
-baseline = getVals()[0]
-average = getVals()[1]
+baseline_improve_results = getVals()[0]
+multiPoint_improve_results = getVals()[1]
+aggressiveMutate_improve_results = getVals()[2]
 
-plot(baseline, average)
-print(baseline, '\n', average)
+plot(baseline_improve_results, multiPoint_improve_results, aggressiveMutate_improve_results)
