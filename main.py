@@ -42,7 +42,8 @@ def getVals():
 
     return baseline_improve, twoPoint_improve, multiPoint_improve, aggressiveMutate_improve, baseline_average, \
            twoPoint_average, multiPoint_average, aggressiveMutate_average, w1000_improve, w9010_improve, w8020_improve, \
-           w7030_improve, w6040_improve, w5050_improve, w4060_improve, w3070_improve, w2080_improve, w1090_improve, w0100_improve
+           w7030_improve, w6040_improve, w5050_improve, w4060_improve, w3070_improve, w2080_improve, w1090_improve,\
+           w0100_improve
 
 
 def plot(baseline, twopoint, multipoint, aggressive):
@@ -94,7 +95,7 @@ def weighted_plot(w1000_results, w9010_results, w8020_results, w7030_results, w6
                   w4060_results, w3070_results, w2080_results, w1090_results, w0100_results):
     for i in range(0, len(w8020_results)):
         w1000_results[i] = w1000_results[i] / 76 * 100
-        w9010_results[i] = w9010_results[i] / 74.7 * 100
+        w9010_results[i] = w9010_results[i] / 69.1 * 100
         w8020_results[i] = w8020_results[i] / 62.2 * 100
         w7030_results[i] = w7030_results[i] / 55.3 * 100
         w6040_results[i] = w6040_results[i] / 48.4 * 100
@@ -105,24 +106,24 @@ def weighted_plot(w1000_results, w9010_results, w8020_results, w7030_results, w6
         w1090_results[i] = w1090_results[i] / 13.9 * 100
         w0100_results[i] = w0100_results[i] / 7 * 100
 
-    plt.plot(w1000_results, label='100% evaluation, 0% distance')
-    plt.plot(w9010_results, label='90% evaluation, 10% distance')
-    plt.plot(w8020_results, label='80% evaluation, 20% distance')
-    plt.plot(w7030_results, label='70% evaluation, 30% distance')
-    plt.plot(w6040_results, label='60% evaluation, 40% distance')
-    plt.plot(w5050_results, label='50% evaluation, 50% distance')
-    plt.plot(w4060_results, label='40% evaluation, 60% distance')
-    plt.plot(w3070_results, label='30% evaluation, 70% distance')
-    plt.plot(w2080_results, label='20% evaluation, 80% distance')
-    plt.plot(w1090_results, label='10% evaluation, 90% distance')
-    plt.plot(w0100_results, label='0% evaluation, 100% distance')
+    plt.plot(w1000_results, label='100% evaluation, 0% distance', color='#001FFF', alpha=0.8)
+    plt.plot(w9010_results, label='90% evaluation, 10% distance', color='#0093FF', alpha=0.8)
+    plt.plot(w8020_results, label='80% evaluation, 20% distance', color='#00ECFF', alpha=0.8)
+    plt.plot(w7030_results, label='70% evaluation, 30% distance', color='#00FFC5', alpha=0.8)
+    plt.plot(w6040_results, label='60% evaluation, 40% distance', color='#00FF87', alpha=0.8)
+    plt.plot(w5050_results, label='50% evaluation, 50% distance', color='#00FF1B', alpha=0.8)
+    plt.plot(w4060_results, label='40% evaluation, 60% distance', color='#46FF00', alpha=0.8)
+    plt.plot(w3070_results, label='30% evaluation, 70% distance', color='#8FFF00', alpha=0.8)
+    plt.plot(w2080_results, label='20% evaluation, 80% distance', color='#B6FF00', alpha=0.8)
+    plt.plot(w1090_results, label='10% evaluation, 90% distance', color='#C1FF00', alpha=0.8)
+    plt.plot(w0100_results, label='0% evaluation, 100% distance', color='#FBFF00', alpha=0.8)
 
     plt.xlabel('Generation')
-    plt.ylabel('% of Global maximum fitness achieved')
+    plt.ylabel('% of Global Maximum Fitness Achieved')
     plt.title('Comparison of % of Global Maximum achievable fitness\n achieved through iterations\n'
               'between various GA operators')
 
-    # plt.ylim(70, 80)
+    plt.ylim(40, 90)
     plt.legend()
 
     plt.show()
@@ -143,7 +144,7 @@ def barchart_percentages(w1000_results, w9010_results, w8020_results, w7030_resu
     plt.bar(ypos, vals, align='center', alpha=0.5)
     plt.xticks(ypos, labels)
     plt.ylabel('% Global Maximum')
-    plt.xlabel('Ratio of automated evaluation : Entropy value')
+    plt.xlabel('Ratio of Automated Evaluation : Entropy value')
     plt.title('Comparison of % of Global Maximum achievable fitness\n achieved through iterations\n'
               'between various GA operators')
     plt.ylim(65, 90)
